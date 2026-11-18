@@ -1,0 +1,19 @@
+Ambient Room
+Copyright 2026 Jasman-Studio
+
+This source distribution contains the Android TV renderer, coordinator,
+web remote, public API contract, synthetic test fixtures and verification tools.
+Project source and documentation are offered under Apache-2.0. Third-party
+components retain their original terms and attribution.
+
+The Gradle wrapper is upstream build tooling. Its original copyright and
+Apache-2.0 notices are preserved in the scripts and JAR. The full license is
+included in third-party-licenses/Gradle.txt.
+
+The included Outfit license document retains this upstream attribution:
+Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)
+SIL Open Font License, Version 1.1; see third-party-licenses/OFL-Outfit.txt.
+The Outfit font binary is absent.
+
+See THIRD-PARTY.md for the retained Android dependency declarations and
+external tool requirements.

@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2026 Jasman-Studio
+# SPDX-License-Identifier: Apache-2.0
+
+# Local configuration and credentials
+.env
+.env.*
+*.env
+local.properties
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.key
+*.der
+*.crt
+*.cer
+google-services.json
+.npmrc
+credentials*.json
+secrets*.json
+service-account*.json
+cookies*
+
+# Runtime data and diagnostics
+/data/
+/uploads/
+/backups/
+/private/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.log
+*.hprof
+
+# Build and dependency caches
+.gradle/
+.kotlin/
+**/build/
+node_modules/
+**/dist/
+coverage/
+playwright-report/
+test-results/
+*.apk
+*.aab
+*.apks
+*.aar
+
+# Editor and operating-system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

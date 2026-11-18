@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Ambient Room</title><link rel="stylesheet" href="/style.css"></head>
+<body><header><p>LIBRARY MUSIC · SHARED MOMENTS</p><h1>Ambient Room</h1></header>
+<main><p id="notice" role="status" aria-live="polite">Connect to your room.</p>
+<section id="welcome"><h2>Set up or approve this remote</h2>
+<form id="login"><label>Console approval code<input name="approvalCode" type="password" required autocomplete="off"></label><button>Open host remote</button></form>
+<details><summary>First run</summary><p>Use the setup code displayed in the local coordinator console. HTTPS is the default. Local HTTP needs the explicit coordinator option.</p>
+<form id="setup"><label>Setup code<input name="setupCode" type="password" required autocomplete="off"></label>
+<label>Coordinator origin<input name="publicOrigin" type="url" required></label>
+<label>Library server type<select name="kind"><option value="opensubsonic">OpenSubsonic</option><option value="jellyfin">Jellyfin</option></select></label>
+<label>Library base URL<input name="baseUrl" type="url" required></label>
+<label>OpenSubsonic username<input name="username" autocomplete="off"></label>
+<label>Library credential<input name="credential" type="password" required autocomplete="off"></label><button>Set up room</button></form></details></section>
+<div id="host" hidden>
+<section><h2>Player</h2><p id="playing"></p><label>Linked playlist<select id="playlist"></select></label>
+<div class="actions"><button id="start">Start</button><button data-control="play">Play</button><button data-control="pause">Pause</button><button data-control="next">Next</button><button id="stop">Stop</button></div>
+<form id="volume"><label>Volume 0–100<input name="level" type="number" min="0" max="100" value="65" required></label><button>Set volume</button></form>
+<form id="timer"><label>Timer minutes<input name="minutes" type="number" min="1" max="240" value="30" required></label><button>Set timer</button><button type="button" id="timer-off">Timer off</button></form><p id="timer-state"></p>
+<form id="pair"><label>TV pairing code<input name="userCode" pattern="[A-Z2-9]{8}" maxlength="8" required></label><button>Approve TV</button></form>
+<button id="unpair" type="button">Unpair current TV</button><label>Current TV device ID<input id="device-id" autocomplete="off"></label>
+<button id="logout">Revoke this remote</button></section>
+<section><h2>Library &amp; local queue</h2><button id="libraries">List library playlists</button><div id="available"></div><div id="links"></div>
+<form id="search"><label>Search your library<input name="q" minlength="1" maxlength="120" required></label><button>Search library</button></form><div id="results"></div>
+<ol id="queue"></ol><button id="save">Save local order</button><button id="reset">Reset queue</button><p>Queue edits and saved order stay in this coordinator. Removing a track keeps your media file.</p></section>
+<section><h2>Room scene &amp; message</h2><form id="scene"><label>Scene<select name="scene"><option>calm</option><option>nightcity</option><option>rain</option><option>cafe</option><option>festival</option><option>kpop</option></select></label><button>Use scene</button><button type="button" id="playlist-scene">Use playlist scene</button></form>
+<form id="message"><label>Message<input name="text" maxlength="400" required></label><label>Style<select name="style"><option>banner</option><option>card</option><option>confetti</option></select></label><label>Duration in minutes<input name="minutes" type="number" min="1" max="240" value="30" required></label><button>Show message</button><button id="message-clear" type="button">Clear message</button></form>
+<form id="photo"><label>Photo (JPEG, PNG or WebP, up to 8 MiB)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp" required></label><button>Show photo</button></form><img id="picture" alt="Selected room photo" hidden><p id="photo-state"></p></section>
+<section><h2>Guest party</h2><form id="settings"><label><input name="enabled" type="checkbox">Enable guest requests</label><label>Order<select name="order"><option value="first_come">First come</option><option value="take_turns">Take turns</option></select></label><button>Update party</button></form>
+<button id="renew">Renew guest party</button><p id="party-link"></p><div id="guests"></div><div id="requests"></div><p>Blocking moderates a browser session. A new anonymous browser can join again.</p></section>
+<details><summary>Replace library configuration</summary><p>Replacement stops playback and clears links, local orders, resume and photos. Relink your playlists afterward.</p><form id="config"><label>Type<select name="kind"><option value="opensubsonic">OpenSubsonic</option><option value="jellyfin">Jellyfin</option></select></label><label>Base URL<input name="baseUrl" type="url" required></label><label>OpenSubsonic username<input name="username"></label><label>Credential<input name="credential" type="password" required autocomplete="off"></label><button>Replace library</button></form></details>
+</div>
+<section id="guest" hidden><h2>Join the room</h2><p>Choose music from the host’s library.</p><form id="join"><label>Your display name<input name="name" maxlength="200" required autocomplete="off"></label><button>Join</button></form><p id="guest-now"></p>
+<div class="actions"><button data-guest-control="play">Play mine</button><button data-guest-control="pause">Pause mine</button><button data-guest-control="next">Skip mine</button></div>
+<form id="guest-search"><label>Search the library<input name="q" minlength="1" maxlength="120" required></label><button>Find music</button></form><div id="guest-results"></div><h3>Up next</h3><ol id="up-next"></ol></section>
+</main><script type="module" src="/app.mjs"></script></body></html>

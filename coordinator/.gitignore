@@ -1,0 +1,5 @@
+ambient-room/
+*.db*
+coverage/
+node_modules/
+.test-room-*/
